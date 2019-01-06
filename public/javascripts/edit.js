@@ -1,3 +1,4 @@
+
 var config = {
     apiKey: "AIzaSyB2-ZdmzUAFpNMAgRxoVZsPpOttQSTblPE",
     authDomain: "event-i.firebaseapp.com",
@@ -8,7 +9,8 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var storage = firebase.storage().ref();
+
+var selectedFile;
 
 function get_data(event_id) {
     database.ref(event_id).on('value', function (snapshot) {
@@ -26,48 +28,79 @@ function get_data(event_id) {
         let price = snapshot.val().price
         let type = snapshot.val().type
         console.log(cpTelp)
-        document.getElementById("image").src=""+image+"";
-        document.getElementById("event_name").value=""+name+"";
-        document.getElementById("description").value=""+desc+"";
-        document.getElementById("date").value=""+date+"";
-        document.getElementById("location").value=""+location+"";
-        document.getElementById("city").value=""+city;
-        document.getElementById("price").value=""+price+"";
-        document.getElementById("type").value=""+type+"";
-        document.getElementById("email").value=""+cpEmail+"";
-        document.getElementById("cpTelp").value=""+cpTelp+"";
+        document.getElementById("image").src = "" + image + "";
+        document.getElementById("event_name").value = "" + name + "";
+        document.getElementById("description").value = "" + desc + "";
+        document.getElementById("date").value = "" + date + "";
+        document.getElementById("location").value = "" + location + "";
+        document.getElementById("city").value = "" + city;
+        document.getElementById("price").value = "" + price + "";
+        document.getElementById("type").value = "" + type + "";
+        document.getElementById("email").value = "" + cpEmail + "";
+        document.getElementById("cpTelp").value = "" + cpTelp + "";
         // document.getElementById("btn_edit").onclick()
     })
 }
-function write_data(id){
-    var data={
-        image:$('#image').val(),
-        name:$('#event_name').val(),
-        desc:$('#description').val(),
-        cpEmail:$('#email').val(),
-        cpTelp:$('#cpTelp').val(),
-        date:$('#date').val(),
-        location:$('#location').val(),
-        city:$('#city').val(),
-        price:$('#price').val(),
-        type:$('#type').val()
+function write_data(id) {
+    var data = {
+        image: document.getElementById('image').src,
+        name: $('#event_name').val(),
+        desc: $('#description').val(),
+        cpEmail: $('#email').val(),
+        cpTelp: $('#cpTelp').val(),
+        date: $('#date').val(),
+        location: $('#location').val(),
+        city: $('#city').val(),
+        price: $('#price').val(),
+        type: $('#type').val()
     }
-    
+
     var key = id;
-    
-    var updates={};
-    updates['/'+key+'/']=data;
+    // console.log(data)
+    var updates = {};
+    updates['/' + key + '/'] = data;
     return firebase.database().ref().update(updates);
 }
+
 
 $(function () {
     var params = window.location.search;
     var search = new URLSearchParams(params);
     var event_id = search.get('id');
+
     get_data(event_id);
-    document.getElementById("btn_modify").onclick=function(){
-        // write_data(event_id);
-        console.log($('#upload_image').val);
-        // window.location.href="/detail?id="+event_id
+    // if(document.getElementById("image").src==null){
+    // }
+
+    document.getElementById("btn_modify").onclick = function () {
+        write_data(event_id);
+        window.location.href = "/detail?id=" + event_id
     }
+    var btn_upload = document.getElementById('upload_image');
+    var uploader = document.getElementById('uploader');
+    btn_upload.addEventListener('change', function (e) {
+
+        //dapetin nama file
+        var file = e.target.files[0];
+
+        // bikin storage reference
+        var storage_ref = firebase.storage().ref('/images/' + file.name)
+
+        //upload file
+        var task = storage_ref.put(file);
+
+        //update progress bar
+        task.on('state_changed', function progress(snapshot){
+            var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+            uploader.value = percentage;
+        },function error(){
+
+        },function complete(snapshot){
+            downloadURL = storage_ref.getDownloadURL().then(function(url){
+                var url = url;
+                document.getElementById('image').src=""+url+"";
+                console.log(url)
+            });
+        })
+    })
 })

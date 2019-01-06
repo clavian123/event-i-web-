@@ -1,4 +1,3 @@
-
 var config = {
     apiKey: "AIzaSyB2-ZdmzUAFpNMAgRxoVZsPpOttQSTblPE",
     authDomain: "event-i.firebaseapp.com",
@@ -38,6 +37,7 @@ function get_data(event_id) {
         document.getElementById("type").value = "" + type + "";
         document.getElementById("email").value = "" + cpEmail + "";
         document.getElementById("cpTelp").value = "" + cpTelp + "";
+        document.getElementById("owner").value = "" + owner + "";
         // document.getElementById("btn_edit").onclick()
     })
 }
@@ -52,21 +52,35 @@ function write_data(id) {
         location: $('#location').val(),
         city: $('#city').val(),
         price: $('#price').val(),
-        type: $('#type').val()
+        type: $('#type').val(),
+        owner: $('#owner').val(),
+        id:id
     }
-
     var key = id;
     // console.log(data)
     var updates = {};
     updates['/' + key + '/'] = data;
     return firebase.database().ref().update(updates);
 }
-
-
+// function delete_data(id){
+//     database.ref(id).remove();
+// }
 $(function () {
+    $('#btn_home').click(function(){
+        window.location.href="/showlist"
+    })
+    $('#btn_add_new').click(function(){
+        window.location.href="/add"
+    })
     var params = window.location.search;
     var search = new URLSearchParams(params);
     var event_id = search.get('id');
+
+    $('#btn_delete').click(function(){
+        console.log(event_id)
+        database.ref(event_id).remove()
+        window.location.href="/showlist"
+    })
 
     get_data(event_id);
     // if(document.getElementById("image").src==null){
@@ -76,6 +90,7 @@ $(function () {
         write_data(event_id);
         window.location.href = "/detail?id=" + event_id
     }
+    
     var btn_upload = document.getElementById('upload_image');
     var uploader = document.getElementById('uploader');
     btn_upload.addEventListener('change', function (e) {

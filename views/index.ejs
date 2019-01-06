@@ -15,11 +15,12 @@
       $('#btn_register').click(function(){
         window.location.href='/register';
       })
-      $('#btn_login').click(function(){
-        window.location.href='/showlist';
-      })
+      // $('#btn_login').click(function(){
+      //   window.location.href='/showlist';
+      // })
     })
   </script>
+  <script src="/javascripts/login.js"></script>
 </head>
 <body>
   <div role="heading" style="margin-top: 5%">
@@ -38,7 +39,7 @@
   <p style="text-align: center;margin-top: 5%">or</p>
   <div style="text-align: center; margin-left: 10%;margin-right: 10%">
     <button style="background-color:#3b5998;color: white; width: 100%">LOGIN WITH FACEBOOK</button>
-    <button style="background-color:#db4a39;color: white; width: 100%">LOGIN WITH GOOGLE+</button>
+    <button style="background-color:#db4a39;color: white; width: 100%" id="btn_login_google">LOGIN WITH GOOGLE+</button>
   </div>
   
 </body>

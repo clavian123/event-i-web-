@@ -17,8 +17,13 @@ function move(id){
 
 $(function(){
     
+    $('#btn_add_new').click(function(){
+        window.location.href="/add"
+    })
+
     database.ref().on('child_added',function(snapshot){
         let db = snapshot.val().id;
+        console.log(snapshot.val().name)
         database.ref(db).on('value',function(snapshot){
             let name = snapshot.val().name
             let desc = snapshot.val().desc

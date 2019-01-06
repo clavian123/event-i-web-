@@ -43,6 +43,13 @@ function get_data(event_id) {
     })
 }
 $(function () {
+    $('#btn_home').click(function(){
+        window.location.href="/showlist"
+    })
+    $('#btn_add_new').click(function(){
+        window.location.href="/add"
+    })
+
     var params = window.location.search;
     var search = new URLSearchParams(params);
     var event_id = search.get('id');

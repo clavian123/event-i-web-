@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>REGISTER</title>
+  <link rel="stylesheet" href="/themes/event-i.min.css" />
+  <link rel="stylesheet" href="/themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="javascripts/detail.js"></script>
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      width: 80%;
+      margin-left: 10%;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 2px 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <img style="margin-left: 10%;max-width: 80%" id="image">
+  <h2 id="name" style="text-align: center"></h2>
+  <p id="desc" style="text-align: center">DESKRIPSI</p>
+  <br>
+  <div class="card">
+    <div class="container" id="container1">
+      <p id="date">DATE</p>
+      <p id="location">LOCATION</p>
+      <p id="price">PRICE</p>
+      <p id="type">TYPE</p>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="container" id="container1">
+      <h3>CONTACT PERSON</h4>
+      <p id="telp">CONTACT TELP</p>
+      <p id="email">EMAIL</p>
+    </div>
+  </div>
+  <br>
+  <button style="width: 80%;margin-left: 10%" id="btn_edit">EDIT EVENT</button>
+  <p style="text-align: center" id="owner">OWNED BY</p>
+
+</body>
+
+</html>

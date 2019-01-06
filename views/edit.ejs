@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MODIFY</title>
+	<link rel="stylesheet" href="/themes/event-i.min.css" />
+	<link rel="stylesheet" href="/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/javascripts/edit.js"></script>
+</head>
+<body>
+  <div role="heading">
+    <h1 style="text-align: center">EDIT EVENT</h1>
+    <img style="margin-left: 10%;max-width: 80%" id="image" style="width:100%">
+  </div>
+  <form style="text-align: center; width: 80%; margin-left: 10%;margin-right: 10%">
+    <input type="file" id="upload_image" name="upload_image" required>
+    <input type="text" id="event_name" placeholder="Event Name" required>
+    <input type="text" id="description" placeholder="Description" required>
+    <input type="date" id="date" placeholder="Date" required>
+    <input type="text" id="location" placeholder="Location" required>
+    <input type="text" id="city" placeholder="City" required>
+    <input type="number" id="price" placeholder="Entrance Fee (Price)" required>
+    <input type="text" id="type" placeholder="Event Type" required>
+    <input type="number" id="cpTelp" placeholder="Phone Number" required>
+    <input type="email" id="email" placeholder="Contact Email" required>
+    
+
+  </form>
+  <div style="margin-left: 10%;margin-right: 10%">
+    <button style="width: 100%" id="btn_modify">SAVE MODIFIED EVENT</button>
+  </div>
+  
+  
+</body>
+</html>

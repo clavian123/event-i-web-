@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LOGIN</title>
+	<link rel="stylesheet" href="/themes/event-i.min.css" />
+	<link rel="stylesheet" href="/themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script>
+    $(function(){
+      $('#btn_register').click(function(){
+        window.location.href='/register';
+      })
+      $('#btn_login').click(function(){
+        window.location.href='/showlist';
+      })
+    })
+  </script>
+</head>
+<body>
+  <div role="heading" style="margin-top: 5%">
+    <h1 style="text-align: center">EVENT-I</h1>
+    <h2 style="text-align: center">LOGIN</h2>
+  </div>
+  <form style="text-align: center; width: 80%; margin-left: 10%;margin-right: 10%">
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+  </form>
+  <a href="#" style="margin-left: 10%">Forgot Password?</a>
+  <div style="width: 100%">
+    <button style="width: 39%;margin-left: 10%;float: left" id="btn_login">LOGIN</button>
+    <button style="width: 39%;margin-right: 10%;float: right" id="btn_register">REGISTER</button>
+  </div>
+  <p style="text-align: center;margin-top: 5%">or</p>
+  <div style="text-align: center; margin-left: 10%;margin-right: 10%">
+    <button style="background-color:#3b5998;color: white; width: 100%">LOGIN WITH FACEBOOK</button>
+    <button style="background-color:#db4a39;color: white; width: 100%">LOGIN WITH GOOGLE+</button>
+  </div>
+  
+</body>
+</html>

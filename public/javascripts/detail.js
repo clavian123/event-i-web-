@@ -43,16 +43,40 @@ function get_data(event_id) {
     })
 }
 $(function () {
+    var owner
+    if(!sessionStorage.getItem('user')){
+        window.location.href="/"
+    }
+    else{
+        user = sessionStorage.getItem('user')
+
+        var params = window.location.search;
+        var search = new URLSearchParams(params);
+        var event_id = search.get('id');
+
+        database.ref(event_id).on('value', function (snapshot) {
+            owner = snapshot.val().owner
+            if(owner != user){
+                $('#btn_edit').hide()
+            }
+            else{
+                $('btn_edit').show()
+            }
+        })
+        
+    }
     $('#btn_home').click(function(){
         window.location.href="/showlist"
     })
     $('#btn_add_new').click(function(){
         window.location.href="/add"
     })
+    $('#btn_logout').click(function(){
+        sessionStorage.clear();
+        window.location.href="/";
+    })
 
-    var params = window.location.search;
-    var search = new URLSearchParams(params);
-    var event_id = search.get('id');
+    
     get_data(event_id);
     document.getElementById("btn_edit").onclick=function(){
         window.location.href="/edit?id="+event_id

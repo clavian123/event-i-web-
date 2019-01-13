@@ -34,8 +34,15 @@ function write_data() {
     return firebase.database().ref().update(updates);
 }
 $(function () {
+    if(!sessionStorage.getItem('user')){
+        window.location.href="/"
+    }
     $('#btn_home').click(function(){
         window.location.href="/showlist"
+    })
+    $('#btn_logout').click(function(){
+        sessionStorage.clear();
+        window.location.href="/";
     })
     // get_data(event_id);
     // if(document.getElementById("image").src==null){

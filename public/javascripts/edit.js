@@ -66,6 +66,9 @@ function write_data(id) {
 //     database.ref(id).remove();
 // }
 $(function () {
+    if(!sessionStorage.getItem('user')){
+        window.location.href="/"
+    }
     $('#btn_home').click(function(){
         window.location.href="/showlist"
     })
@@ -80,6 +83,10 @@ $(function () {
         console.log(event_id)
         database.ref(event_id).remove()
         window.location.href="/showlist"
+    })
+    $('#btn_logout').click(function(){
+        sessionStorage.clear();
+        window.location.href="/";
     })
 
     get_data(event_id);

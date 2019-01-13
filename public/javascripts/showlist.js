@@ -16,9 +16,15 @@ function move(id){
 }
 
 $(function(){
-    
+    if(!sessionStorage.getItem('user')){
+        window.location.href="/"
+    }
     $('#btn_add_new').click(function(){
         window.location.href="/add"
+    })
+    $('#btn_logout').click(function(){
+        sessionStorage.clear();
+        window.location.href="/";
     })
 
     database.ref().on('child_added',function(snapshot){
@@ -40,5 +46,4 @@ $(function(){
           </div>`)
         })
      })
-
 })

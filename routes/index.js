@@ -34,4 +34,7 @@ router.get('/edit', function(req,res){
 router.get('/add', function(req,res){
   res.render('add');
 })
+router.get('/forget',function(req,res){
+  res.render('forget');
+})
 module.exports = router;

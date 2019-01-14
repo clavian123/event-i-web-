@@ -22,6 +22,9 @@ $(function(){
             alert(error)
         })
     })
+    $('#btn_forget').click(function(){
+        window.location.href="/forget"
+    })
     $('#btn_login_google').click(function(){
         var provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider).then(function(result) {
